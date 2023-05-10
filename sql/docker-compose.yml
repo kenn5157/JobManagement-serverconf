@@ -10,6 +10,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${SQL_PASS}
       MYSQL_DATABASE: ${SQL_DATABASE}
+      # MYSQL_USER: ${SQL_USER}
+      # MYSQL_PASSWORD: $SQL{SQL_PASS}
     ports:
       - ${SQL_PORT}:3306
     networks:
