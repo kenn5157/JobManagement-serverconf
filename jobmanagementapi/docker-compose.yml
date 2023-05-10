@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  jobman-api:
+    image: jobman-api
+    container_name: jobman-api
+    restart: always
+    environment:
+      SQL_SERVER_IP: ${SQL_SERVER_IP}
+      SQL_SERVER_PORT: ${SQL_SERVER_PORT}
+      SQL_DATABASE: ${SQL_DATABASE}
+      SQL_USER: ${SQL_USER}
+      SQL_PASS: ${SQL_PASS}
+    ports:
+      - 8081:80
+    networks:
+      - sql_network
+
+networks:
+  sql_network:
+    external: true
