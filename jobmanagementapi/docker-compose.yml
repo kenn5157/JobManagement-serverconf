@@ -12,7 +12,7 @@ services:
       SQL_USER: ${SQL_USER}
       SQL_PASS: ${SQL_PASS}
     ports:
-      - 8081:80
+      - 80:80
     networks:
       - sql_network
 
