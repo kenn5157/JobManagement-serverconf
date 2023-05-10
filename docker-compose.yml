@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  database:
+    image: mysql
+    container_name: database
+    restart: always
+    volumes:
+      - ./sql/db/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${SQL_USER}
+      MYSQL_DATABASE: ${SQL_DATABASE}
+    ports:
+      - 3306:3306
+    networks:
+      - sql_network
+
+  flyway:
+    image: flyway/flyway
+    container_name: flyway
+    environment:
+      SQL_USER: ${SQL_USER}
+      SQL_PASS: ${SQL_PASS}
+      SQL_DATABASE: ${SQL_DATABASE}
+    command: migrate
+    volumes:
+      - ./flyway/conf:/flyway/conf
+      - ./flyway/sql:/flyway/sql
+    networks:
+      - sql_network
+    depends_on:
+      - database
+
+networks:
+  sql_network:
+    external: true
