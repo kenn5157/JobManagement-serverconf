@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   jobman-api:
-    image: jobman-api
+    image: jobman-api:testbuild
     container_name: jobman-api
     restart: always
     environment:
