@@ -33,6 +33,24 @@ services:
     depends_on:
       - database
 
+  jobman-api:
+    image: jobman-api:testbuild
+    container_name: jobman-api
+    restart: always
+    environment:
+      SQL_SERVER_IP: ${SQL_SERVER_IP}
+      SQL_SERVER_PORT: ${SQL_SERVER_PORT}
+      SQL_DATABASE: ${SQL_DATABASE}
+      SQL_USER: ${SQL_USER}
+      SQL_PASS: ${SQL_PASS}
+      API_SECRET: ${API_SECRET}
+    ports:
+      - 80:80
+    networks:
+      - sql_network
+    depends_on:
+      - database
+
 networks:
   sql_network:
     external: true
