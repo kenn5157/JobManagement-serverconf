@@ -1,2 +1,2 @@
 ALTER TABLE ProblemTable
-    DROP CONSTRAINT not null;
+    MODIFY Location text NULL;
