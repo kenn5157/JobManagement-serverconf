@@ -1,3 +1,3 @@
 ALTER TABLE ProblemTable
-    MODIFY Latitude FLOAT NOT NULL,
-    MODIFY Longitude FLOAT NOT NULL;
+    MODIFY Latitude DECIMAL(9, 6) NOT NULL,
+    MODIFY Longitude DECIAML(9, 6) NOT NULL;
