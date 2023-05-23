@@ -1,11 +1,14 @@
-version: '3.2'
+version: '2.2'
 services:
   es01:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
     container_name: es01
     environment:
+      - node.name=es01
+      - cluster.name=es-docker-cluster
+      - cluster.initial_master_nodes=es01
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512 -Xms512"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -23,8 +26,8 @@ services:
     ports:
       - 5601:5601
     environment:
-      ELASTICSEARCH_URL: http://es01:9200
-      ELASTICSEARCH_HOST: http://es01:9200
+      ELASTICSEARCH_URL: http://localhost:9200
+      ELASTICSEARCH_HOST: http://localhost:9200
     networks:
       - elastic
 
